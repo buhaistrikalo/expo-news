@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { gStyle } from '../styles/style';
-import base from '../styles/base';
+import { gStyle } from 'styles/style';
+import base from 'styles/base';
 
 const Posts = ({ route }) => {
     return (

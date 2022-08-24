@@ -1,10 +1,10 @@
 import React from 'react';
-import Main from './screens/Main';
-import Post from './screens/Post';
+import Main from 'screens/Main';
+import Post from 'screens/Post';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { gStyle } from './styles/style';
+import { gStyle } from 'styles/style';
 
 const Stack = createStackNavigator();
 

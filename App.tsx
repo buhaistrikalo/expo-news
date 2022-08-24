@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
 import AppLoading from 'expo-app-loading';
 import MainStack from './navigate';
 
 import * as Font from 'expo-font';
-import { gStyle } from './styles/style';
 
 const fonts = () =>
     Font.loadAsync({

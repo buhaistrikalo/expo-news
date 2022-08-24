@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Button, TouchableOpacity, FlatList } from 'react-native';
 
-import PostCard from '../components/PostCard';
+import PostCard from 'components/PostCard';
 
-import { gStyle } from '../styles/style';
-import { IPost } from '../types';
+import { gStyle } from 'styles/style';
+import { IPost } from 'types';
 
 const NEWS = [
     {
