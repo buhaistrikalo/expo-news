@@ -1,10 +1,12 @@
-import React from 'react';
-import { View, Text, Button, TouchableOpacity, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Button, TouchableOpacity, FlatList, Modal, StyleSheet } from 'react-native';
+
 
 import PostCard from 'components/PostCard';
 
 import { gStyle } from 'styles/style';
 import { IPost } from 'types';
+import ModalAddPost from 'components/ModalAddPost';
 
 const NEWS = [
     {
@@ -28,9 +30,12 @@ const NEWS = [
 ] as IPost[];
 
 const Main = ({ navigation }) => {
+    // Modal Window
+    const [modalWindow, setModalWindow] = useState(false);
+    const handleModalWindow = (value: boolean) => () => setModalWindow(value);
+
     return (
         <View style={gStyle.main}>
-            {/* <Text style={gStyle.title}>Last posts</Text> */}
             <FlatList
                 data={NEWS}
                 renderItem={({ item }) => (
@@ -39,8 +44,11 @@ const Main = ({ navigation }) => {
                     </TouchableOpacity>
                 )}
             />
+            <ModalAddPost show={modalWindow} setShow={handleModalWindow}/>
         </View>
     );
 };
+
+
 
 export default Main;
