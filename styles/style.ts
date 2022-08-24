@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import base from '../styles/base';
 
 export const gStyle = StyleSheet.create({
     main: {
@@ -8,7 +9,7 @@ export const gStyle = StyleSheet.create({
     },
     title: {
         fontSize: 20,
-        color: '#333',
+        color: base.colors.black,
         fontFamily: 'Montserrat-Bold',
         textAlign: 'center',
     },

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import AppLoading from 'expo-app-loading';
-import Main from './components/Main';
+import MainStack from './navigate';
 
 import * as Font from 'expo-font';
 import { gStyle } from './styles/style';
@@ -26,14 +26,5 @@ export default function App() {
         );
     }
 
-    return <Main />;
+    return <MainStack />;
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
