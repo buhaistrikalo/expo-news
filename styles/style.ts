@@ -7,9 +7,12 @@ export const gStyle = StyleSheet.create({
         padding: 20,
         fontFamily: 'Montserrat-Light',
     },
+    header: {
+        backgroundColor: base.colors.primary,
+    },
     title: {
         fontSize: 20,
-        color: base.colors.black,
+        color: base.colors.white,
         fontFamily: 'Montserrat-Bold',
         textAlign: 'center',
     },

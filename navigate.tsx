@@ -18,6 +18,7 @@ const Navigate = () => {
                     options={{
                         title: 'Last posts',
                         headerTitleStyle: gStyle.title,
+                        headerStyle: gStyle.header
                     }}
                 />
                 <Stack.Screen
