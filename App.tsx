@@ -1,28 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import AppLoading from 'expo-app-loading';
-import MainStack from './navigate';
+import axios from 'axios';
+import { StatusBar } from 'expo-status-bar';
+import { FlatList, Text, View, ActivityIndicator, RefreshControl } from 'react-native';
 
-import * as Font from 'expo-font';
-
-const fonts = () =>
-    Font.loadAsync({
-        'Montserrat-Bold': require('./assets/fonts/Montserrat-Bold.ttf'),
-        'Montserrat-Light': require('./assets/fonts/Montserrat-Light.ttf'),
-    });
+import Post from 'components/Post';
+import { IPost } from 'types';
+import Center from 'components/Center';
 
 export default function App() {
-    const [fontLoaded, setFontLoaded] = useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
+    const [items, setItems] = React.useState([] as IPost[]);
 
-    if (!fontLoaded) {
+    const fetchPosts = () => {
+        setIsLoading(true);
+        axios
+            .get('https://63088fe2722029d9ddd2290e.mockapi.io/post')
+            .then(({ data }) => setItems(data))
+            .catch(() => console.error('Error getting posts from server'))
+            .finally(() => setIsLoading(false));
+    };
+
+    React.useEffect(fetchPosts, []);
+
+    const RenderItem = ({ item }: { item: IPost }) => (
+        <Post
+            key={item.id}
+            title={item.title}
+            imageUrl={item.imageUrl}
+            createdAt={item.createdAt}
+        />
+    );
+
+    if (isLoading)
         return (
-            <AppLoading
-                startAsync={fonts}
-                onFinish={() => setFontLoaded(true)}
-                onError={console.warn}
-            />
+            <Center>
+                <ActivityIndicator size="large" />
+            </Center>
         );
-    }
 
-    return <MainStack />;
+    return (
+        <View>
+            <FlatList
+                data={items}
+                renderItem={({ item }) => <RenderItem item={item} />}
+                refreshControl={<RefreshControl refreshing={isLoading} onRefresh={fetchPosts} />}
+            />
+            <StatusBar style="auto" />
+        </View>
+    );
 }

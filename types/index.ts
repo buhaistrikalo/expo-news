@@ -1,6 +1,7 @@
-export interface IPost {
+export type IPost = {
+    id: string | number;
     title: string;
-    body: string;
-    author: string;
-    key: number | string;
-}
+    imageUrl: string;
+    text: string;
+    createdAt: string;
+};
